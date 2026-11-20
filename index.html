@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¡Mi Graduación de Kínder! | Hanna 🎓</title>
+  <meta name="description" content="Acompáñanos a celebrar la graduación de preescolar de nuestra pequeña Hanna.">
+
+  <!-- Google Fonts: Tipografías infantiles y amigables -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Lucide Icons (CDN) -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- ==============================================
+       1. PANTALLA DE BIENVENIDA (INVITACIÓN INTERACTIVA)
+  ============================================== -->
+
+
+  <div id="intro-screen" class="intro-screen">
+
+
+
+    <div class="decor-balloons-bg">
+      <span class="balloon b-yellow">🎈</span>
+      <span class="balloon b-coral">🎈</span>
+      <span class="balloon b-blue">🎈</span>
+    </div>
+
+    <div class="envelope-wrapper">
+      <div class="stamp-seal">🎓</div>
+      <p class="intro-subtitle">¡ESTÁS INVITADO A MI FIESTA!</p>
+      <h1 class="intro-title">Graduación de Hanna</h1>
+      <p class="intro-event">Generación 2024 - 2026 🎒✏️</p>
+
+      <button id="btn-open-invite" class="btn-primary btn-bounce">
+        <span>¡Abrir Invitación!</span>
+        <i data-lucide="sparkles"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- ==============================================
+       REPRODUCTOR DE MÚSICA FLOTANTE
+  ============================================== -->
+  <div class="music-controller hidden" id="music-controller">
+    <button id="btn-music-toggle" class="btn-music" aria-label="Música" title="Música On/Off">
+      <i data-lucide="volume-2" id="music-icon"></i>
+      <span class="music-wave">
+        <span></span><span></span><span></span>
+      </span>
+    </button>
+    <audio id="bg-audio" loop preload="auto">
+      <!-- Canción alegre y tierna (puedes cambiarla por tu propio mp3 en assets/audio/cancion.mp3) -->
+      <source
+        src="https://cdn.pixabay.com/download/audio/2022/10/14/audio_9939f75ec0.mp3?filename=cheerful-ukulele-day-123472.mp3"
+        type="audio/mp3">
+    </audio>
+  </div>
+
+  <!-- ==============================================
+       CONTENIDO PRINCIPAL
+  ============================================== -->
+  <main id="main-content" class="main-content">
+
+    <!-- BANDERINES DE FIESTA (SVG RESPONSIVE) -->
+    <!-- <div class="bunting-banner" aria-hidden="true"> 
+    <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path
+        d="M0,0 L0,20 Q100,50 200,20 Q300,50 400,20 Q500,50 600,20 Q700,50 800,20 Q900,50 1000,20 Q1100,50 1200,20 L1200,0 Z"
+        fill="#FFE5EC" opacity="0.6" />
+      Banderines de colores 
+      <polygon points="50,25 20,95 80,95" fill="#FF6B6B" />
+      <polygon points="150,28 120,98 180,98" fill="#4D96FF" />
+      <polygon points="250,29 220,99 280,99" fill="#FFD166" />
+      <polygon points="350,28 320,98 380,98" fill="#06D6A0" />
+      <polygon points="450,26 420,96 480,96" fill="#9B5DE5" />
+      <polygon points="550,29 520,99 580,99" fill="#FF9F1C" />
+      <polygon points="650,28 620,98 680,98" fill="#FF6B6B" />
+      <polygon points="750,26 720,96 780,96" fill="#4D96FF" />
+      <polygon points="850,29 820,99 880,99" fill="#FFD166" />
+      <polygon points="950,28 920,98 980,98" fill="#06D6A0" />
+      <polygon points="1050,26 1020,96 1080,96" fill="#9B5DE5" />
+      <polygon points="1150,29 1120,99 1180,99" fill="#FF9F1C" />
+    </svg>
+    </div>-->
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+      <!-- Elementos flotantes interactivos -->
+      <div class="floating-sticker sticker-cap">🎓</div>
+      <div class="floating-sticker sticker-star-1">⭐</div>
+      <div class="floating-sticker sticker-star-2">✨</div>
+      <div class="floating-sticker sticker-diploma">📜</div>
+      <div class="floating-sticker sticker-crayon">🖍️</div>
+
+      <div class="hero-content">
+        <span class="badge-tag">¡Terminé mi Jardin! 🌟</span>
+        <h1 class="celebrant-name">¡Hanna se Gradúa!</h1>
+        <p class="hero-subtitle">Generación Preescolar 2024 - 2026</p>
+
+        <div class="hero-date-pill">
+          <i data-lucide="calendar"></i>
+          <span>Sábado, 12 de Diciembre • 2:00 PM</span>
+        </div>
+
+        <p class="hero-quote">
+          "Un pequeño birrete para mí, ¡pero un gran paso hacia la primaria!
+          Acompáñame con tu alegría a festejar este logro tan feliz."
+        </p>
+      </div>
+    </section>
+
+    <!-- CUENTA REGRESIVA -->
+    <section class="section countdown-section">
+      <div class="section-badge">⏰ Cuenta Regresiva</div>
+      <h2 class="section-title">¡La emoción está por comenzar!</h2>
+
+      <div class="countdown-container" id="countdown">
+        <div class="countdown-card card-coral">
+          <span class="number" id="days">00</span>
+          <span class="label">Días</span>
+        </div>
+        <div class="countdown-card card-yellow">
+          <span class="number" id="hours">00</span>
+          <span class="label">Horas</span>
+        </div>
+        <div class="countdown-card card-blue">
+          <span class="number" id="minutes">00</span>
+          <span class="label">Minutos</span>
+        </div>
+        <div class="countdown-card card-mint">
+          <span class="number" id="seconds">00</span>
+          <span class="label">Segundos</span>
+        </div>
+      </div>
+
+      <div class="calendar-action">
+        <a id="btn-add-calendar" href="#" class="btn-secondary" target="_blank">
+          <i data-lucide="calendar-plus"></i>
+          <span>Agendar en Google Calendar</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- EVENTOS: CEREMONIA Y FIESTA -->
+    <section class="section locations-section">
+      <div class="section-badge">📍 Dónde y Cuándo</div>
+      <h2 class="section-title">Nuestra Celebración</h2>
+      <p class="section-subtitle">¡Tendremos dos momentos llenos de magia y diversión!</p>
+
+      <div class="cards-grid">
+        <!-- Tarjeta 1: Ceremonia de Entrega de Diplomas -->
+        <div class="event-card event-academic">
+          <div class="event-bubble-icon icon-grad">
+            🎓
+          </div>
+          <span class="event-step">PARTE 1</span>
+          <h3 class="event-type">Acto de Graduación</h3>
+          <p class="event-time"><i data-lucide="clock"></i> 2:00 PM</p>
+          <h4 class="event-venue">Local "Dorado VIP"</h4>
+          <p class="event-address">Ref. A media cuadra de la comisaria</p>
+          <p class="event-note">Entrega de birretes, diplomas y medallas.</p>
+
+          <div class="event-actions">
+            <a href="https://maps.google.com" target="_blank" class="btn-action">
+              <i data-lucide="map-pin"></i> Cómo llegar (Maps)
+            </a>
+            <a href="https://waze.com/ul" target="_blank" class="btn-action btn-outline">
+              <i data-lucide="navigation"></i> Waze
+            </a>
+          </div>
+        </div>
+
+        <!-- Tarjeta 2: Fiesta y Convivio -->
+        <div class="event-card event-party">
+          <div class="event-bubble-icon icon-party">
+            🎉
+          </div>
+          <span class="event-step">PARTE 2</span>
+          <h3 class="event-type">¡Fiesta de Graduados!</h3>
+          <p class="event-time"><i data-lucide="clock"></i> 4:00 PM</p>
+          <h4 class="event-venue">Local "Dorado VIP"</h4>
+          <p class="event-address">Ref: a media cuadra de la comisaria</p>
+          <p class="event-note">Juegos y musica infantiles.</p>
+
+          <div class="event-actions">
+            <a href="https://maps.google.com" target="_blank" class="btn-action">
+              <i data-lucide="map-pin"></i> Cómo llegar (Maps)
+            </a>
+            <a href="https://waze.com/ul" target="_blank" class="btn-action btn-outline">
+              <i data-lucide="navigation"></i> Waze
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ITINERARIO INFANTIL -->
+    <!--<section class="section itinerary-section">
+      <div class="section-badge">✨ Itinerario</div>
+      <h2 class="section-title">El Programa del Gran Día</h2>
+      <p class="section-subtitle">Horarios para no perderte ningún momento especial</p>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot color-1">🎓</div>
+          <div class="timeline-content">
+            <span class="timeline-time">2:00 PM</span>
+            <h4 class="timeline-title">Acto Protocolario & Diplomas</h4>
+            <p>Entrega oficial de certificados y último pase de lista escolar.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot color-2">📸</div>
+          <div class="timeline-content">
+            <span class="timeline-time">3:15 PM</span>
+            <h4 class="timeline-title">Sesión de Fotos y Abrazos</h4>
+            <p>Fotos con maestras, abuelitos y compañeritos de clase.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot color-3">🏰</div>
+          <div class="timeline-content">
+            <span class="timeline-time">4:00 PM</span>
+            <h4 class="timeline-title">Llegada al Jardín de Juegos</h4>
+            <p>Apertura del área de inflables, pintacaritas y bienvenida.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot color-4">🍕</div>
+          <div class="timeline-content">
+            <span class="timeline-time">5:15 PM</span>
+            <h4 class="timeline-title">Comida & Almuerzo Infantil</h4>
+            <p>Banquete familiar, snacks saludables y bebidas refrescantes.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot color-5">🎂</div>
+          <div class="timeline-content">
+            <span class="timeline-time">6:30 PM</span>
+            <h4 class="timeline-title">Pastel de Graduación & Piñata</h4>
+            <p>Cantaremos juntos, apagaremos velitas y romperemos la piñata.</p>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- DRESS CODE INFANTIL -->
+    <section class="section dresscode-section">
+      <div class="card-fun dresscode-card">
+        <div class="fun-header-icon">👗👕</div>
+        <div class="section-badge">👔 Código de Vestimenta</div>
+        <h2 class="section-title">¿Cómo vestir?</h2>
+        <p class="dresscode-highlight">SPORT ELEGANTE / ¡Y CÓMODO PARA JUGAR!</p>
+        <div class="dresscode-grid">
+          <div class="dress-tip">
+            <strong>Para la Ceremonia:</strong>
+            <p>Ropa linda y cómoda para el acto escolar y las fotos con toga/birrete.</p>
+          </div>
+          <div class="dress-tip">
+            <strong>Para la Fiesta:</strong>
+            <p>Se sugiere traer un cambio de ropa cómoda o calcetas antiderrapantes para los juegos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERÍA ESTILO POLAROID CON WASHI TAPE -->
+    <!--<section class="section gallery-section">
+      <div class="section-badge">📷 Recuerdos</div>
+      <h2 class="section-title">Mi Etapa en Preescolar</h2>
+      <p class="section-subtitle">Momentos que guardaré para siempre en mi corazón</p>
+
+      <div class="polaroid-grid">
+        <div class="polaroid-card rotate-left">
+          <div class="washi-tape tape-yellow"></div>
+          <div class="polaroid-img-wrapper">
+            <div class="photo-placeholder">🖍️ Mi primer día de clases</div>
+          </div>
+          <p class="polaroid-caption">¡Qué chiquita estaba!</p>
+        </div>
+
+        <div class="polaroid-card rotate-right">
+          <div class="washi-tape tape-mint"></div>
+          <div class="polaroid-img-wrapper">
+            <div class="photo-placeholder">🎨 Jugando con pintura</div>
+          </div>
+          <p class="polaroid-caption">Mis mejores creaciones</p>
+        </div>
+
+        <div class="polaroid-card rotate-left-soft">
+          <div class="washi-tape tape-pink"></div>
+          <div class="polaroid-img-wrapper">
+            <div class="photo-placeholder">🎭 Mi festival de primavera</div>
+          </div>
+          <p class="polaroid-caption">Bailando con mis amigos</p>
+        </div>
+
+        <div class="polaroid-card rotate-right-soft">
+          <div class="washi-tape tape-blue"></div>
+          <div class="polaroid-img-wrapper">
+            <div class="photo-placeholder">🎓 ¡Lista para Primaria!</div>
+          </div>
+          <p class="polaroid-caption">¡Misión cumplida!</p>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- DETALLES O REGALOS PARA LA GRADUADA -->
+    <section class="section gift-section">
+      <div class="card-fun gift-card-kinder">
+        <div class="fun-header-icon">🎁</div>
+        <div class="section-badge">💝 Detalle para Hanna</div>
+        <h2 class="section-title">Muestra de Cariño</h2>
+        <p class="gift-text">
+          Tu presencia y tu abrazo son el regalo más valioso para Hanna en su graduación.
+          Si deseas obsequiarle un detalle para incentivar su paso a la primaria, contamos con opción de sobre o
+          alcancía virtual:
+        </p>
+
+        <div class="bank-pill">
+          <div class="bank-info">
+            <span class="bank-tag">Alcancía Escolar de Hanna:</span>
+            <span class="bank-number" id="bank-number">965 674 736</span>
+          </div>
+          <button id="btn-copy-account" class="btn-copy" title="Copiar número">
+            <i data-lucide="copy" id="copy-icon"></i>
+            <span id="copy-text">Copiar</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONFIRMACIÓN DE ASISTENCIA (RSVP) ADAPTADO A FAMILIAS -->
+    <section class="section rsvp-section" id="rsvp">
+      <div class="card-fun rsvp-card-kinder">
+        <div class="fun-header-icon">💌</div>
+        <div class="section-badge">🎉 Confirmación</div>
+        <h2 class="section-title">¿Nos acompañas?</h2>
+        <p class="section-subtitle">
+          Agradecemos confirmar tu asistencia antes del <strong>5 de Diciembre</strong> para coordinar lugares y
+          recuerdos de los peques.
+        </p>
+
+        <form id="rsvp-form" class="rsvp-form">
+          <div class="form-group">
+            <label for="family-name">Nombre de la Familia o Invitado *</label>
+            <input type="text" id="family-name" required placeholder="Ej: Familia Morales Gómez">
+          </div>
+
+          <div class="form-group">
+            <label for="guest-attending">¿Podrán asistir? *</label>
+            <select id="guest-attending" required>
+              <option value="" disabled selected>Selecciona una respuesta</option>
+              <option value="si">¡Sí, con mucho gusto festejaremos a Hanna! 🎈</option>
+              <option value="no">Lo sentimos, no podremos acompañarlos 🥺</option>
+            </select>
+          </div>
+
+          <div class="form-row-counts" id="group-counts">
+            <div class="form-group col-half">
+              <label for="adult-count">Adultos 👨‍👩‍👧</label>
+              <input type="number" id="adult-count" min="1" max="10" value="2">
+            </div>
+            <div class="form-group col-half">
+              <label for="kids-count">Niños / Amiguitos 👧👦</label>
+              <input type="number" id="kids-count" min="0" max="10" value="1">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="guest-message">Mensaje de felicitación para Hanna (opcional)</label>
+            <textarea id="guest-message" rows="3"
+              placeholder="Escribe un mensajito lindo para la graduada..."></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary btn-block btn-bounce">
+            <i data-lucide="message-circle"></i>
+            <span>Confirmar por WhatsApp</span>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- FOOTER DIVERTIDO -->
+    <footer class="kinder-footer">
+      <div class="footer-decor">🎒 📚 🎓 ⭐ 🎈</div>
+      <h3 class="footer-name">Hanna</h3>
+      <p class="footer-desc">¡Gracias por ser parte de mi infancia y celebrar mis logros!</p>
+      <small>© 2026 • Graduación Preescolar Hanna</small>
+    </footer>
+
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+
+</html>
