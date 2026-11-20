@@ -75,7 +75,6 @@ function initIntroScreen() {
 
     // Iniciar audio alegre
     if (audio) {
-      audio.load();
       const playPromise = audio.play();
       if (playPromise !== undefined) {
         playPromise.then(() => {
