@@ -308,6 +308,45 @@ body {
   overflow: hidden;
 }
 
+/* Marca de agua fija sutil para el fondo de toda la página */
+.page-bg-watermark {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  height: 90vh;
+  max-width: 650px;
+  background-image: url('../assets/img/mujer.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Marca de agua suave en la portada (Hero) con bordes difuminados */
+.hero-bg-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  max-width: 520px;
+  max-height: 95%;
+  background-image: url('../assets/img/mujer.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  opacity: 0.18;
+  pointer-events: none;
+  z-index: 0;
+  mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 35%, rgba(0, 0, 0, 0) 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 35%, rgba(0, 0, 0, 0) 80%);
+}
+
 /* Stickers flotantes divertidos */
 .floating-sticker {
   position: absolute;
