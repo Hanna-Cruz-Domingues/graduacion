@@ -61,6 +61,8 @@ function initIntroScreen() {
   const btnOpen = document.getElementById('btn-open-invite');
   const musicController = document.getElementById('music-controller');
   const audio = document.getElementById('bg-audio');
+  const btnToggle = document.getElementById('btn-music-toggle');
+  const icon = document.getElementById('music-icon');
 
   if (!btnOpen || !introScreen) return;
 
@@ -73,9 +75,20 @@ function initIntroScreen() {
 
     // Iniciar audio alegre
     if (audio) {
-      audio.play().catch(err => {
-        console.log('Autoplay no disponible:', err);
-      });
+      audio.load();
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          if (btnToggle) btnToggle.classList.remove('paused');
+          if (icon) icon.setAttribute('data-lucide', 'volume-2');
+          if (window.lucide) window.lucide.createIcons();
+        }).catch(err => {
+          console.warn('El navegador solicitó permiso de reproducción:', err);
+          if (btnToggle) btnToggle.classList.add('paused');
+          if (icon) icon.setAttribute('data-lucide', 'volume-x');
+          if (window.lucide) window.lucide.createIcons();
+        });
+      }
     }
 
     // Explosión de confeti multicolor
@@ -97,15 +110,19 @@ function initMusicPlayer() {
 
   btnToggle.addEventListener('click', () => {
     if (audio.paused) {
-      audio.play();
-      btnToggle.classList.remove('paused');
-      if (icon) icon.setAttribute('data-lucide', 'volume-2');
+      audio.play().then(() => {
+        btnToggle.classList.remove('paused');
+        if (icon) icon.setAttribute('data-lucide', 'volume-2');
+        if (window.lucide) window.lucide.createIcons();
+      }).catch(err => {
+        console.error('Error al reproducir audio:', err);
+      });
     } else {
       audio.pause();
       btnToggle.classList.add('paused');
       if (icon) icon.setAttribute('data-lucide', 'volume-x');
+      if (window.lucide) window.lucide.createIcons();
     }
-    if (window.lucide) window.lucide.createIcons();
   });
 }
 
